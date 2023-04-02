@@ -1,10 +1,36 @@
-PShape straps, tete;
-
+PShape Momie;
+PShape straps, tete , leftHand, rightHand, leftEye, rightEye, leftIris, rightIris;
+color c;
 void setup() {
   noStroke();
   size(800, 800, P3D);
   pixelDensity(2);
+  
+  Momie = createShape(GROUP);
+  fill(0);
+  leftIris = createShape(ELLIPSE,-10, -30, 3, 6);
+  leftIris.translate(0,0,91.5);
+  leftIris.fill(0);
+  leftIris.endShape();
+  
+  rightIris = createShape(ELLIPSE,20, -30, 3, 6);
+  rightIris.translate(0,0,91.5);
+  rightIris.endShape();
 
+  noFill();
+  fill(255,255,255);
+  leftEye = createShape(ELLIPSE,-10, -33, 15, 10);
+  leftEye.translate(0,0,90.5);
+  leftEye.fill(255, 255, 255);
+  leftEye.endShape();
+  
+  rightEye = createShape(ELLIPSE,20, -33, 15, 10);
+  rightEye.translate(0,0,90.5);
+  rightEye.fill(255, 255, 255);
+  rightEye.endShape();
+  
+  
+  
   straps = createShape();
   straps.beginShape(QUAD_STRIP);
   for (int i = -300; i <= 300; i++) {
@@ -16,9 +42,12 @@ void setup() {
     straps.fill(c + 20, c + 5, 20);
     straps.vertex(r2 * cos(a) + 250 - 5 * n, r2 * sin(a) + 250 - 5 * n, r3 - 5 * n);
     straps.fill(c, c - 20, -700);
+    
     straps.vertex(r2 * cos(a) + 250 + 10 * n, r2 * sin(a) + 250 - 10 * n, r3 + 17 + 5 * n);
   }
   straps.endShape();
+  
+  //move straps 
   
   tete = createShape();
   tete.beginShape(QUAD_STRIP);
@@ -34,117 +63,100 @@ void setup() {
     tete.vertex(r2 * cos(a), r2 * sin(a), r3 + 17);
   }
   tete.endShape();
-}
-void drawEyes(){
-  stroke(255, 255, 255);
-  fill(255, 255, 255);
-  ellipse(200, 200, 15, 10);
-  fill(0, 0, 0);
-  ellipse(200, 200, 4, 7);
-  fill(255, 255, 255);
-  ellipse(228, 200, 15, 10);
-  fill(0, 0, 0);
-  ellipse(225, 200, 4, 7);
-}
-void cylindre(){
-   int r = 26;
-   int r1 =10;
-float c1 = 190 + 10 * noise(abs(-300) / 10.0);
-beginShape(QUAD_STRIP);
-noStroke();
-for (int i=-45; i<=25; i++) {
-    float x1 = r*sin((i*PI/25.0));
-    float y1 = r*cos((i*PI/25.0));
-    float x2 = r1*sin((i*PI/25.0));
-    float y2 = r1*cos((i*PI/25.0));
-    
-    
-    fill(c1,c1-20,-0);
-    vertex(x1, y1, 0);
-    vertex(x2, y2, 500);
-    
-    
-}
-endShape();
-
-}
-void drawHands(){
-  float c1 = 180 + 10 * noise(abs(-300) / 10.0);
-  beginShape(QUAD_STRIP); // start the main shape
+  
+  leftHand = createShape();
+  leftHand.beginShape(QUAD_STRIP);
+  
   for(int i=-70;i<70;i++){
-    float a = (i)/12.02*3*PI;
+    float a = abs(i)/11.02*4*PI;
     noStroke();
-                               
-      float n = noise(i/200.);
-      float r2 = 20-(14+(i)/10.)*(sin(abs(i)/100.))+5*n;
-      float r3 = 200*((i)/35.);
-      //float c = 210 + 10 * noise(abs(i) / 10.0);
-
-      //println(r3);
-      fill(c1,c1-20,-700);
-      vertex(r2*cos(a), r2*sin(a), r3);
-      //stroke(10,25,55);
-      fill(c1,c1-20,-700);
-      vertex(r2*cos(a), r2*sin(a), r3+17);
-
-    }
+    float n = noise(i/200.);
+    float r2 = 20-(12+abs(i)/10.)*cos(sin((i)/100.))+5*n;
+    float r3 = 112*(abs(i)/35.)+n;;
+    float c = 180 + 10 * noise(abs(i) / 10.0);
+    leftHand.fill(c + 20, c + 5, 20);
+    leftHand.vertex(r2 * cos(a), r2 * sin(a), r3);
+    leftHand.fill(c, c - 20, -700);
+    leftHand.vertex(r2 * cos(a), r2 * sin(a), r3 + 17);
+  }
   
-  endShape(); // end the main shape
-}
-
-void Hands(){
-  pushMatrix();
-  translate(width/2, height/2);
-  //rotateY(2*PI/3);
-  //rotateZ(PI/8);
- float angleDegrees = -7; // rotate by 45 degrees
-float angleRadians = radians(angleDegrees); // convert to radians
-
-rotateX(angleRadians);
-float angleDegrees2 = 10; // rotate by 45 degrees
-float angleRadians2 = radians(angleDegrees2); // convert to radians
-  rotateZ(angleRadians2);
+  leftHand.endShape();
+  
+  rightHand = createShape();
+  rightHand.beginShape(QUAD_STRIP);
+  
+  for(int i=-70;i<70;i++){
+    float a = abs(i)/11.02*4*PI;
+    noStroke();
+    float n = noise(i/200.);
+    float r2 = 20-(12+abs(i)/10.)*cos(sin((i)/100.))+5*n;
+    float r3 = 112*(abs(i)/35.)+n;;
+    float c = 180 + 10 * noise(abs(i) / 10.0);
+    rightHand.fill(c + 20, c + 5, 20);
+    rightHand.vertex(r2 * cos(a), r2 * sin(a), r3);
+    rightHand.fill(c, c - 20, -700);
+    rightHand.vertex(r2 * cos(a), r2 * sin(a), r3 + 17);
+  }
+  
+  rightHand.endShape();
+  
+  Momie.addChild(straps);
+  Momie.addChild(tete);
+  Momie.addChild(leftHand);
+  Momie.addChild(rightHand);
+  Momie.addChild(leftEye);
+  Momie.addChild(rightEye);
+  Momie.addChild(leftIris);
+  Momie.addChild(rightIris);
+  
+   
+    //(x,z,y)
+   straps.translate(-250,-200,-50);
+   straps.rotateX(PI/2);
+   tete.translate(4.5,50,156);
+   tete.rotateX(PI / 2);
+  //hands
+  //(x,y,z) -5 -15 0.5
+  leftHand.translate(25,94,90);
+  float angleDegrees = -5; // rotate by 45 degrees
+  float angleRadians = radians(angleDegrees); // convert to radians
+  leftHand.rotateX(angleRadians);
+  
+  float angleDegrees2 = -15; // rotate by 45 degrees
+  float angleRadians2 = radians(angleDegrees2); // convert to radians
+ leftHand.rotateZ(angleRadians2);
  
-  drawHands();
-  popMatrix();
+  float angleDegrees3 = 0.5; 
+  float angleRadians3 = radians(angleDegrees3); // convert to radians
+  leftHand.rotateY(angleRadians3);
   
-  pushMatrix();
-  translate(width/2, height/2);
-  translate(0,0,-150);
-   float angleDegrees5 = -7; // rotate by 45 degrees
-float angleRadians5 = radians(angleDegrees5); // convert to radians
+  //----------------------------------------------------------------
+  float angleDegrees4 = -5; // rotate by 45 degrees
+  float angleRadian4 = radians(angleDegrees4); // convert to radians
+  
+  
+  float angleDegrees5 = 15; // rotate by 45 degrees
+  float angleRadian5 = radians(angleDegrees5); // convert to radians
 
-rotateX(angleRadians5);
-  cylindre();
-  popMatrix();
+ 
+  float angleDegrees6 = 0.5; 
+  float angleRadian6 = radians(angleDegrees6); // convert to radians
+  
+  
+  rightHand.translate(-25,94,90);
+  rightHand.rotateX(angleRadian4);
+  rightHand.rotateZ(angleRadian5);
+  rightHand. rotateY(angleRadian6);
+ 
+ 
+  
 }
+
 
 void draw() {
   background(255, 192, 255);
-  
-  pushMatrix();
-  translate(width / 2, height / 3);
-  rotateX(PI / 2);
-  rotateZ(PI / 2);
-  translate(-300, -240);
-  shape(straps);
-  popMatrix();
-  
-  pushMatrix();
-  translate(width / 2, height / 3);
-  rotateX(PI / 2);
-  rotateZ(PI / 2);
-  translate(-40, 5.15, 210.5);
-  shape(tete);
-  popMatrix();
-  
-  pushMatrix();
-  translate(180,-22,70);
-  drawEyes();
-  popMatrix();
-  pushMatrix();
-  translate(100,-22,70);
-  Hands();
-  popMatrix();
+ translate(width / 2, height / 3);
+ //rotateY(PI/2);
+  shape(Momie);
   
 }
