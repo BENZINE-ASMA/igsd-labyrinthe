@@ -175,59 +175,78 @@ Momie.scale(0.15);
 void moveMomie(){
   //while(frameCount >0){
 int count =abs((frameCount%80)-3);
+if (frameCount %2==0){
 
-
-if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE && posyM+diryM>=0 && posyM+diryM<LAB_SIZE)){
+if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE2 && posyM+diryM>=0 && posyM+diryM<LAB_SIZE2)){
       if( labyrinthe[level][posyM+diryM][posxM+dirxM]!='#') {
-        float alea = random(1); 
-        if (alea < 0.9){
-       translate(posxM*50,posyM*50,20);
-       println(wallH, wallW);
-       shape(momie());
-        if (frameCount %4==0){
-        posxM+=dirxM; 
-        posyM+=diryM;
-      }
-         }
-        //else{ //a droite
-        
-     //if (count == 0){
-      
-      //else if (alea < 0.95){//left
-      //     int tmp = dirxM; 
-      //     dirxM =diryM; 
-      //     diryM =-tmp;
-      // }else {//down
-      //    int tmp = dirxM; 
-      //    dirxM=-diryM; 
-      //    diryM=tmp;
-      // }
-      //rotateZ(PI/2);
-      //shape(momie());
-     }else {
-     float alea = random(1); 
-     println(alea);
-
-      if (alea < 0.5){//left
-        int tmp = dirxM; 
-          dirxM=-diryM; 
-          diryM=tmp;
-       }else {//down
-      
-                 int tmp = dirxM; 
+        if (frameCount%10==0)
+        {
+          int tmp = dirxM; 
            dirxM =diryM; 
            diryM =-tmp;
-       }
-      rotateZ(PI/2);
-      shape(momie());
-       
-      
-      }
-       //int tmp = dirxM; 
+           rotateZ(PI/2);
+           shape(momie());
+           return  ;
+
+        }
+        float alea = random(1); 
+            translate(posxM*50,posyM*50,20);
+           // println(wallH, wallW);
+            //shape(momie());
+           // if (frameCount %4==0){
+            posxM+=dirxM; 
+            posyM+=diryM;
+         // }
+       // }else if (alea < 0.95){//left
+       //    int tmp = dirxM; 
        //    dirxM =diryM; 
        //    diryM =-tmp;
-}
+       //    rotateZ(PI/2);
+       // }else {//right
+       //   int tmp = dirxM; 
+       //   dirxM=-diryM; 
+       //   diryM=tmp;           
+       //   rotateZ(-PI/2);
+       //}
+       //shape(momie());
+     }
+     else  { //just turn 
+         float alea = random(1); 
+     //println(alea);
+        if (alea <= 0.5){//left
+          //int tmp = dirxM; 
+          //dirxM=-diryM; 
+          //diryM=tmp;
+          //rotateZ(-PI/2);
+        }else {//right
+           int tmp = dirxM; 
+           dirxM =diryM; 
+           diryM =-tmp;
+           rotateZ(PI/2);
+        }
+        //shape(momie());
       }
+  }else {
+   float alea = random(1); 
+     //println(alea);
+        if (alea < 0.5){//left
+          int tmp = dirxM; 
+          dirxM=-diryM; 
+          diryM=tmp;
+          rotateZ(PI/2);
+        }else {//right
+           int tmp = dirxM; 
+           dirxM =diryM; 
+           diryM =-tmp;
+           rotateZ(-PI/2);
+        } 
+        //shape(momie());
+
+  }
+  }
+        shape(momie());
+}
+
      
 
   

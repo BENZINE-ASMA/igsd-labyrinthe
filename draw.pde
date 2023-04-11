@@ -7,37 +7,29 @@ void draw() {
   int imgHeight = texture1.height;
 
   //println(imgWidth,imgHeight);
-  background(128);
+  background(200);
  
   sphereDetail(6);
   if (anim>0) anim--;
   float wallW = width/LAB_SIZE;
   float wallH = height/LAB_SIZE;
-      if (isInLab(posX, posY)== true) {
+      if (isInLab(posX, posY)== true ) {
          printLevel(level);
-          
-          //popMatrix();
           pushMatrix();
           moveMomie();
           popMatrix();
-          //shape(momie());
-          //pushMatrix();
-
-
       }
         
        else 
        {
-       // empPyr();        
-
+         if (level !=1)
+           empPyr();        
          //shape(sable());
          
         
        }
   perspective();
   camera(width/2.0, height/2.0, (height/2.0) / tan(PI*30.0 / 180.0), width/2.0, height/2.0, 0, 0, 1, 0);
-  //camera(width/2.0, height/2.0, 2000, width/2.0, height/2.0, 0, 0, 1, 0);
- //camera(width/2.0, height,3000, width/2.0, height/2.0, 0, 0,1,0);
   noLights();
   stroke(0);
   for (int j=0; j<LAB_SIZE; j++) {
@@ -176,6 +168,33 @@ void draw() {
     shape(ceiling0, 0, 0);
    else
     shape(ceiling1, 0, 0);
+      //  if (isInLab(posX, posY)== true) {
+      //   printLevel(level);
+      //     shape(laby0, 0, 0);
+      //      if (!inLab)
+      //      shape(ceiling0, 0, 0);
+      //         else
+      //      shape(ceiling1, 0, 0);
+    
+          
+      //    //popMatrix();
+      //    //pushMatrix();
+      //    //moveMomie();
+      //    //popMatrix();
+      //    //shape(momie());
+      //    //pushMatrix();
+
+
+      //}
+        
+      // else 
+      // {
+      //  empPyr();        
+
+      //   //shape(sable());
+         
+        
+      // }
     
 }
 
@@ -217,8 +236,14 @@ void keyPressed() {
         posY-=dirY;
     }else {
       if(labyrinthe[level][posY-dirY][posX-dirX]!='#') { 
-        posX-=dirX; 
-        posY-=dirY;
+         println(posX);
+         println(posY);
+        if ((posX != 1 && posY!=0) ||level !=0)
+       { println(posX);
+         println(posY);
+
+         posX-=dirX; 
+        posY-=dirY;}
       }
     }
   }
@@ -247,13 +272,17 @@ void keyPressed() {
   }
   if (keyCode == 85 )
   {
-    //LAB_SIZE-=4;
+    LAB_SIZE2-=4;
     
     if (level < 4)
      {
        level++;
        posX=1;
        posY=0;
+       posxM =1;
+       posyM =0;
+       dirxM =0;
+        diryM =1;
    }
   }
   
