@@ -11,20 +11,22 @@ void draw() {
  
   sphereDetail(6);
   if (anim>0) anim--;
-
   float wallW = width/LAB_SIZE;
   float wallH = height/LAB_SIZE;
-      if (isInLab(posX, posY)== true) 
-        {printLevel(level);}
+      if (isInLab(posX, posY)== true) {
+         
+      }
+        
        else 
        {
-         empPyr();
-         shape(sable());
+        //empPyr();        
+        printLevel(level);
+
+         //shape(sable());
+         
+         moveMomie();
+        
        }
-
-
-  
-
   perspective();
   camera(width/2.0, height/2.0, (height/2.0) / tan(PI*30.0 / 180.0), width/2.0, height/2.0, 0, 0, 1, 0);
   //camera(width/2.0, height/2.0, 2000, width/2.0, height/2.0, 0, 0, 1, 0);

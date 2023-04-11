@@ -1,9 +1,12 @@
-int iposX = 1;
-int iposY = -1;
+int iposX =-3;
+int iposY = -3;
 
 int posX = iposX;
 int posY = iposY;
 int level = 0;
+
+int MdirX = 0;
+int MdirY = 1;
 
 int dirX = 0;
 int dirY = 1;
@@ -30,6 +33,9 @@ PShape ceiling1;
 
 PImage  texture0;
 PImage  texture1;
+PImage  textSable;
+PImage  ground;
+
 float wallW = width/LAB_SIZE;
 float wallH = height/LAB_SIZE;
   
@@ -38,22 +44,23 @@ float noiseVal = 0;
 float angle = 0;
 
 PShape sable(){
-   desert = createShape();
+  desert = createShape();
   desert.beginShape(QUADS);
-  //desert.stroke(1);
   noStroke();
-  for (int j = -100; j < 100; j++) {
+  desert.texture(textSable);
+  for (int j = -60; j < 60; j++) {
     for (int i = -60; i < 60; i++) {
       int t = 12;
+      
       desert.fill(175, 139, 1);
-      desert.vertex(j * t, i * t, noise(noiseVal + j * 0.1, noiseVal + i * 0.1) * 80);
+      desert.vertex(j * t, i * t, noise(noiseVal + j * 0.1, noiseVal + i * 0.1) * 80,0,0);
       desert.fill(173, 140, 1);
-      desert.vertex((j + 1) * t, i *t, noise(noiseVal + (j + 1) * 0.1, noiseVal + i * 0.1) * 80);
+      desert.vertex((j + 1) * t, i *t, noise(noiseVal + (j + 1) * 0.1, noiseVal + i * 0.1) * 80,400,0);
       desert.fill(174, 136, 0);
       desert.vertex((j + 1) *t, (i + 1) * t, noise(noiseVal + (j + 1) 
-                    * 0.1, noiseVal + (i + 1) * 0.1) * 80);
+                    * 0.1, noiseVal + (i + 1) * 0.1) * 80,400,400);
       desert.fill(173, 135, 0);
-      desert.vertex(j * t, (i + 1) *t, noise(noiseVal + j * 0.1, noiseVal + (i + 1) * 0.1) * 80);
+      desert.vertex(j * t, (i + 1) *t, noise(noiseVal + j * 0.1, noiseVal + (i + 1) * 0.1) * 80,0,400);
     }
   }
   //desert.rotateY(PI/2);
@@ -64,12 +71,14 @@ PShape sable(){
   
 }
 
+
 void setup() { 
   pixelDensity(2);
   randomSeed(2);
  texture0 = loadImage("stones.jpg");
  texture1 = loadImage("stonewall.jpg");
- 
+ textSable = loadImage("sable.jpg");
+ ground  = loadImage("ground.jpg");
   size(1000, 1000, P3D);
   
   labyrinthe = new char[PYR_SIZE][LAB_SIZE][LAB_SIZE];
