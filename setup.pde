@@ -205,11 +205,14 @@ void createLab(int size, int z){
       } 
 //      //else si ce n est pas un mur
       else {
+        laby0.texture(ground);
+        
         laby0.fill(20); // ground
         laby0.vertex(i*wallW-wallW/2, j*wallH-wallH/2, -50, 0, 0);
-        laby0.vertex(i*wallW+wallW/2, j*wallH-wallH/2, -50, 0, 1);
-        laby0.vertex(i*wallW+wallW/2, j*wallH+wallH/2, -50, 1, 1);
-        laby0.vertex(i*wallW-wallW/2, j*wallH+wallH/2, -50, 1, 0);
+        laby0.vertex(i*wallW+wallW/2, j*wallH-wallH/2, -50, 0, 500);
+        laby0.vertex(i*wallW+wallW/2, j*wallH+wallH/2, -50, 500,500);
+        laby0.vertex(i*wallW-wallW/2, j*wallH+wallH/2, -50, 500,0);
+        laby0.texture(texture0);
         
           ceiling0.beginShape(QUADS); // begin new shape for each ceiling
           ceiling0.fill(100); // top of walls

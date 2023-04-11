@@ -167,47 +167,86 @@ PShape momie(){
 Momie.rotateX(-PI/2);
 //Momie.translate(0,2000,200);
 //Momie.translate()
-Momie.scale(0.05);
+Momie.scale(0.15);
   return Momie;
 }
 
 
 void moveMomie(){
   //while(frameCount >0){
-int count =abs((frameCount%30)-3);
+int count =abs((frameCount%80)-3);
 
-if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE && posyM+diryM>=0 && posyM+diryM<LAB_SIZE))
-{
-  if (count == 0){
-      int tmp = dirxM; 
-      dirxM =diryM; 
-      diryM =-tmp;
-      rotateZ(PI/2);
-      shape(momie());
 
-  }
-  else{
-   if( labyrinthe[level][posyM+diryM][posxM+dirxM]!='#') {
-       translate(dirxM,diryM , 0);
+if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE && posyM+diryM>=0 && posyM+diryM<LAB_SIZE)){
+      if( labyrinthe[level][posyM+diryM][posxM+dirxM]!='#') {
+        float alea = random(1); 
+        if (alea < 0.9){
+       translate(posxM*50,posyM*50,20);
+       println(wallH, wallW);
        shape(momie());
-
+        if (frameCount %4==0){
         posxM+=dirxM; 
         posyM+=diryM;
-   }
-   else {
-     int tmp = dirX; 
-      dirxM =diryM; 
-      diryM =-tmp;
-      tmp = dirX; 
-      dirxM =diryM; 
-      diryM =-tmp;
+      }
+         }
+        //else{ //a droite
+        
+     //if (count == 0){
+      
+      //else if (alea < 0.95){//left
+      //     int tmp = dirxM; 
+      //     dirxM =diryM; 
+      //     diryM =-tmp;
+      // }else {//down
+      //    int tmp = dirxM; 
+      //    dirxM=-diryM; 
+      //    diryM=tmp;
+      // }
+      //rotateZ(PI/2);
+      //shape(momie());
+     }else {
+     float alea = random(1); 
+     println(alea);
+
+      if (alea < 0.5){//left
+        int tmp = dirxM; 
+          dirxM=-diryM; 
+          diryM=tmp;
+       }else {//down
+      
+                 int tmp = dirxM; 
+           dirxM =diryM; 
+           diryM =-tmp;
+       }
       rotateZ(PI/2);
       shape(momie());
-
-   }
-  }
-
+       
+      
+      }
+       //int tmp = dirxM; 
+       //    dirxM =diryM; 
+       //    diryM =-tmp;
 }
+      }
+     
+
+  
+ 
+  //} 
+   //else {
+   //  int tmp = dirX; 
+   //   dirxM =diryM; 
+   //   diryM =-tmp;
+   //   tmp = dirX; 
+   //   dirxM =diryM; 
+   //   diryM =-tmp;
+   //   rotateZ(PI/2);
+   //   shape(momie());
+
+   //}
+  //}
+
+
        //translate(dirxM,diryM , 0);
 
       //rotateZ(PI/2);  
@@ -226,7 +265,6 @@ if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE && posyM+diryM>=0 && posyM+diryM<LAB
       //println(count );
  
     //rotateY(PI/2);
-  //float alea = random(1); 
      
   // if (alea < 0.25){//up
  
@@ -238,7 +276,3 @@ if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE && posyM+diryM>=0 && posyM+diryM<LAB
   // }
   // else {//left
   // }
-
-
-  //}
-}

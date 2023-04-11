@@ -15,10 +15,12 @@ void draw() {
   float wallH = height/LAB_SIZE;
       if (isInLab(posX, posY)== true) {
          printLevel(level);
-          //moveMomie();
+          
           //popMatrix();
-          translate(50, 50, 0);
-          shape(momie());
+          pushMatrix();
+          moveMomie();
+          popMatrix();
+          //shape(momie());
           //pushMatrix();
 
 
@@ -60,6 +62,7 @@ void draw() {
   translate(50+posX*wallW/8, 50+posY*wallH/8, 50);
   sphere(3);
   popMatrix();
+  
   pushMatrix();
   fill(255, 0, 0);
   noStroke();
@@ -70,43 +73,6 @@ void draw() {
 
   stroke(0);
   
- //   if (!inLab) {
- //   if (isInLab(posX, posY)){
- //   println("is in here ");
- //   //empPyr();
- //   perspective(2*PI/3, float(width)/float(height), 1, 1000);
- //   if (animT)
- //     camera((posX-dirX*anim/20.0)*wallW,      (posY-dirY*anim/20.0)*wallH,      -15+2*sin(anim*PI/5.0), 
- //            (posX-dirX*anim/20.0+dirX)*wallW, (posY-dirY*anim/20.0+dirY)*wallH, -15+4*sin(anim*PI/5.0), 0, 0, -1);
- //   else if (animR)
- //     camera(posX*wallW, posY*wallH, -15, 
- //           (posX+(odirX*anim+dirX*(20-anim))/20.0)*wallW, (posY+(odirY*anim+dirY*(20-anim))/20.0)*wallH, -15-5*sin(anim*PI/20.0), 0, 0, -1);
- //   else {
- //     camera(posX*wallW, posY*wallH, -15, 
- //            (posX+dirX)*wallW, (posY+dirY)*wallH, -15, 0, 0, -1);
- //   }
- //   //camera((posX-dirX*anim/20.0)*wallW, (posY-dirY*anim/20.0)*wallH, -15+6*sin(anim*PI/20.0), 
- //   //  (posX+dirX-dirX*anim/20.0)*wallW, (posY+dirY-dirY*anim/20.0)*wallH, -15+10*sin(anim*PI/20.0), 0, 0, -1);
- ////if (inLab){
- //   lightFalloff(0.0, 0.01, 0.0001);
- //   pointLight(255, 255, 255, posX*wallW, posY*wallH, 15);
- // }else{
- //    if (animT)
- //     camera((posX-dirX*anim/20.0)*wallW,      (posY-dirY*anim/20.0)*wallH,      -15+2*sin(anim*PI/5.0)+100*level, 
- //            (posX-dirX*anim/20.0+dirX)*wallW, (posY-dirY*anim/20.0+dirY)*wallH, -15+4*sin(anim*PI/5.0), 0, 0, -1);
- //   else if (animR)
- //     camera(posX*wallW, posY*wallH, -15+100*level, 
- //           (posX+(odirX*anim+dirX*(20-anim))/20.0)*wallW, (posY+(odirY*anim+dirY*(20-anim))/20.0)*wallH, -15-5*sin(anim*PI/20.0), 0, 0, -1);
- //   else {
- //     camera(posX*wallW, posY*wallH, -15+100*level, 
- //            (posX+dirX)*wallW, (posY+dirY)*wallH, -15, 0, 0, -1);
- //   }
-  
- // }
- //   }else{
- //   lightFalloff(0.0, 0.05, 0.0001);
- //   pointLight(255, 255, 255, posX*wallW, posY*wallH, 15);
- // }
   
   if (!inLab) {
   //if (isInLab(posX, posY)) {
@@ -202,7 +168,7 @@ void draw() {
       popMatrix();
     }
   }
-// rotateX(PI/4);
+
     
 
   shape(laby0, 0, 0);
@@ -213,15 +179,6 @@ void draw() {
     
 }
 
-
-//boolean isOutLab(int posX, int posY){
-//   if(level != 0)
-//     return (false);
-//   else if (posX==1 && posY==0)
-//   return (true);
-//   else 
-//   return (false);
-//  }
 void keyPressed() {
   
   
