@@ -1,5 +1,5 @@
-int iposX =-3;
-int iposY = -3;
+int iposX =1;
+int iposY = 0;
 
 int posX = iposX;
 int posY = iposY;

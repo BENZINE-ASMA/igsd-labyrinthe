@@ -7,24 +7,29 @@ void draw() {
   int imgHeight = texture1.height;
 
   //println(imgWidth,imgHeight);
-  background(192);
+  background(128);
  
   sphereDetail(6);
   if (anim>0) anim--;
   float wallW = width/LAB_SIZE;
   float wallH = height/LAB_SIZE;
       if (isInLab(posX, posY)== true) {
-         
+         printLevel(level);
+          //moveMomie();
+          //popMatrix();
+          translate(50, 50, 0);
+          shape(momie());
+          //pushMatrix();
+
+
       }
         
        else 
        {
-        //empPyr();        
-        printLevel(level);
+       // empPyr();        
 
          //shape(sable());
          
-         moveMomie();
         
        }
   perspective();
@@ -53,6 +58,12 @@ void draw() {
   fill(0, 255, 0);
   noStroke();
   translate(50+posX*wallW/8, 50+posY*wallH/8, 50);
+  sphere(3);
+  popMatrix();
+  pushMatrix();
+  fill(255, 0, 0);
+  noStroke();
+  translate(50+posxM*wallW/8, 50+posyM*wallH/8, 50);
   sphere(3);
   popMatrix();
 

@@ -1,4 +1,8 @@
 PShape Momie;
+int posxM =1;
+int posyM =0;
+int dirxM =0;
+int diryM =1;
 PShape hand1,hand2;
 PShape straps, tete , leftHand, rightHand, leftEye, rightEye, leftIris, rightIris;
 color c;
@@ -170,12 +174,58 @@ Momie.scale(0.05);
 
 void moveMomie(){
   //while(frameCount >0){
-     shape(momie());
+int count =abs((frameCount%30)-3);
 
-    for (int i= 0; i < 500; i=i+100 ){
-      translate(0,i , 200);
-    }
-    rotateY(PI/2);
+if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE && posyM+diryM>=0 && posyM+diryM<LAB_SIZE))
+{
+  if (count == 0){
+      int tmp = dirxM; 
+      dirxM =diryM; 
+      diryM =-tmp;
+      rotateZ(PI/2);
+      shape(momie());
+
+  }
+  else{
+   if( labyrinthe[level][posyM+diryM][posxM+dirxM]!='#') {
+       translate(dirxM,diryM , 0);
+       shape(momie());
+
+        posxM+=dirxM; 
+        posyM+=diryM;
+   }
+   else {
+     int tmp = dirX; 
+      dirxM =diryM; 
+      diryM =-tmp;
+      tmp = dirX; 
+      dirxM =diryM; 
+      diryM =-tmp;
+      rotateZ(PI/2);
+      shape(momie());
+
+   }
+  }
+
+}
+       //translate(dirxM,diryM , 0);
+
+      //rotateZ(PI/2);  
+
+
+//shape(momie());
+
+    //int count =abs((frameCount%30)-3);
+    //  translate(dirxM,diryM , 0);
+    //  if (count ==0){
+    //    rotateZ(-PI/4);
+    //    rotateZ(-PI/4);
+    //  }
+
+       // rotateZ(PI/4);
+      //println(count );
+ 
+    //rotateY(PI/2);
   //float alea = random(1); 
      
   // if (alea < 0.25){//up
