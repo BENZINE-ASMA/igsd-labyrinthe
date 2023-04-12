@@ -167,36 +167,51 @@ PShape momie(){
 Momie.rotateX(-PI/2);
 //Momie.translate(0,2000,200);
 //Momie.translate()
-Momie.scale(0.15);
+Momie.scale(0.10);
   return Momie;
 }
 
 
 void moveMomie(){
-  //while(frameCount >0){
-int count =abs((frameCount%80)-3);
-if (frameCount %2==0){
+//if (frameCount %2==0){
 
 if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE2 && posyM+diryM>=0 && posyM+diryM<LAB_SIZE2)){
-      if( labyrinthe[level][posyM+diryM][posxM+dirxM]!='#') {
+      if(labyrinthe[level][posyM+diryM][posxM+dirxM]!='#') {
+         translate(posxM*50,posyM*50,-5);
+          
+         posxM+=dirxM; 
+         posyM+=diryM;
+          
         if (frameCount%10==0)
         {
+           float alea = random(1); 
+           if (alea <= 0.5){//left
           int tmp = dirxM; 
+          dirxM=-diryM; 
+          diryM=tmp;
+          rotateZ(-PI/2);
+        }else {//right
+           int tmp = dirxM; 
            dirxM =diryM; 
            diryM =-tmp;
            rotateZ(PI/2);
-           shape(momie());
-           return  ;
+        }
+          
+        //  int tmp = dirxM; 
+        //   dirxM =diryM; 
+        //   diryM =-tmp;
+        //   rotateZ(PI/2);
+        //   shape(momie());
+        //   return  ;
 
         }
-        float alea = random(1); 
-            translate(posxM*50,posyM*50,20);
+        
+           
            // println(wallH, wallW);
             //shape(momie());
-           // if (frameCount %4==0){
-            posxM+=dirxM; 
-            posyM+=diryM;
-         // }
+            //if (frameCount %4==0){
+           
+          //}
        // }else if (alea < 0.95){//left
        //    int tmp = dirxM; 
        //    dirxM =diryM; 
@@ -240,13 +255,11 @@ if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE2 && posyM+diryM>=0 && posyM+diryM<LA
            diryM =-tmp;
            rotateZ(-PI/2);
         } 
-        //shape(momie());
-
   }
-  }
-        shape(momie());
+   shape(momie());
+  //}
+       
 }
-
      
 
   

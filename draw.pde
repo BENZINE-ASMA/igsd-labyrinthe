@@ -24,7 +24,7 @@ void draw() {
        {
          if (level !=1)
            empPyr();        
-         //shape(sable());
+         shape(sable());
          
         
        }
@@ -236,14 +236,8 @@ void keyPressed() {
         posY-=dirY;
     }else {
       if(labyrinthe[level][posY-dirY][posX-dirX]!='#') { 
-         println(posX);
-         println(posY);
-        if ((posX != 1 && posY!=0) ||level !=0)
-       { println(posX);
-         println(posY);
-
          posX-=dirX; 
-        posY-=dirY;}
+        posY-=dirY;
       }
     }
   }
