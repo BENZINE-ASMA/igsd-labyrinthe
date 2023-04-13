@@ -14,17 +14,31 @@ void draw() {
   float wallW = width/LAB_SIZE;
   float wallH = height/LAB_SIZE;
       if (isInLab(posX, posY)== true ) {
+
          printLevel(level);
-          pushMatrix();
-          moveMomie();
-          popMatrix();
+          //pushMatrix();
+          //moveMomie();
+          //popMatrix();
       }
         
        else 
        {
          if (level !=1)
-           empPyr();        
-         shape(sable());
+          {
+          //  pushMatrix();
+          //translate(47, 47, 0);
+          //rotateX(PI/2);
+          // background(220);
+          //         println("here");
+
+          //ellipse(0,0, 47, 100);
+          //  //shape(ovalDoor); // Draw the oval door using shape() function
+          //  popMatrix();
+          empPyr();
+       
+          
+            }
+         //shape(sable());
          
         
        }
@@ -168,59 +182,34 @@ void draw() {
     shape(ceiling0, 0, 0);
    else
     shape(ceiling1, 0, 0);
-      //  if (isInLab(posX, posY)== true) {
-      //   printLevel(level);
-      //     shape(laby0, 0, 0);
-      //      if (!inLab)
-      //      shape(ceiling0, 0, 0);
-      //         else
-      //      shape(ceiling1, 0, 0);
-    
-          
-      //    //popMatrix();
-      //    //pushMatrix();
-      //    //moveMomie();
-      //    //popMatrix();
-      //    //shape(momie());
-      //    //pushMatrix();
-
-
-      //}
-        
-      // else 
-      // {
-      //  empPyr();        
-
-      //   //shape(sable());
-         
-        
-      // }
-    
 }
 
 void keyPressed() {
   
-  
+
+
+
   if (key=='l') 
     //true shows the inside
     //false shows the top
     inLab = !inLab;
   //up
   if (anim==0 && keyCode==38) {
-    if ((posX+dirX>=0 && posX+dirX<LAB_SIZE && posY+dirY>=0 && posY+dirY<LAB_SIZE) ){
+      if (posX ==LAB_SIZE2-1 && posY==LAB_SIZE2-2 && dirX ==1 && dirY==0)
+        return ;
+      if (level!= 0 && posX ==1 && posY==0 && dirX ==0 && dirY==-1)
+        return ;
+    if ((posX+dirX>=0 && posX+dirX<LAB_SIZE2 && posY+dirY>=0 && posY+dirY<LAB_SIZE2) ){
       if( labyrinthe[level][posY+dirY][posX+dirX]!='#') {
       posX+=dirX; 
       posY+=dirY;
       anim=20;
       animT = true;
       animR = false;
-    }
+     }
 }
     else //if (!isInLab(posX, posY))
     {
-     // movPlayerCoor(dirX, dirY);
-          //println(dirX);
-    //println(dirY);
       posX+=dirX; 
       posY+=dirY;
       anim=20;
@@ -231,9 +220,14 @@ void keyPressed() {
   }
   //down
   if (anim==0 && keyCode==40 ){
-    if (!(posX-dirX>=0 && posX-dirX<LAB_SIZE && posY-dirY>=0 && posY-dirY<LAB_SIZE)){
-        posX-=dirX; 
-        posY-=dirY;
+        if (posX ==LAB_SIZE2-1 && posY==LAB_SIZE2-2 && dirX ==-1 && dirY==0)
+        return ;
+      if (level!= 0 && posX ==1 && posY==0 && dirX ==0 && dirY==1)
+        return ;
+    if (!(posX-dirX>=0 && posX-dirX<LAB_SIZE2 && posY-dirY>=0 && posY-dirY<LAB_SIZE2)){
+     
+      posX-=dirX; 
+      posY-=dirY;
     }else {
       if(labyrinthe[level][posY-dirY][posX-dirX]!='#') { 
          posX-=dirX; 
@@ -266,17 +260,17 @@ void keyPressed() {
   }
   if (keyCode == 85 )
   {
-    LAB_SIZE2-=4;
-    
-    if (level < 4)
+   
+    if (level < 4 && posX ==LAB_SIZE2-1 && posY==LAB_SIZE2-2)
      {
+        LAB_SIZE2-=4;
        level++;
        posX=1;
        posY=0;
        posxM =1;
        posyM =0;
        dirxM =0;
-        diryM =1;
+       diryM =1;
    }
   }
   

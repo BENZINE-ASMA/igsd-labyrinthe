@@ -39,6 +39,12 @@ PImage  ground;
 
 float wallW = width/LAB_SIZE;
 float wallH = height/LAB_SIZE;
+
+PShape ovalDoor; // Declare PShape object for oval door
+float centerX; // X-coordinate of the center of the door
+float centerY; // Y-coordinate of the center of the door
+float doorWidth; // Width of the door
+float doorHeight; // Height of the door 
   
 PShape desert;
 float noiseVal = 0;
@@ -83,6 +89,12 @@ void setup() {
  textSable = loadImage("sable.jpg");
  ground  = loadImage("ground.jpg");
   size(1000, 1000, P3D);
+  centerX = 1340;
+  centerY = 1340;
+  doorWidth = 47;
+  doorHeight = 50;
+    ovalDoor = createDoor(centerX, centerY, doorWidth, doorHeight); // Create the oval door PShape
+
   
   labyrinthe = new char[PYR_SIZE][LAB_SIZE][LAB_SIZE];
   //pyramide = new char[PYR_SIZE][LAB_SIZE][LAB_SIZE];
