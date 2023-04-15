@@ -8,11 +8,11 @@ PShape straps, tete , leftHand, rightHand, leftEye, rightEye, leftIris, rightIri
 color c;
 
 PShape momie(){
- hand1 = loadShape("hand1.obj");
+ 
   hand1.scale(2.5);
   hand1.tint(c+5, c - 20, 0);
   
-  hand2 = loadShape("hand2.obj");
+  
   hand2.scale(2.5);
   hand2.tint(c+5, c - 20, 0);
   
@@ -172,15 +172,16 @@ Momie.scale(0.10);
 }
 
 
-void moveMomie(){
+void moveMomie(){ 
 //if (frameCount %2==0){
 
 if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE2 && posyM+diryM>=0 && posyM+diryM<LAB_SIZE2)){
       if(labyrinthe[level][posyM+diryM][posxM+dirxM]!='#') {
          translate(posxM*50,posyM*50,-5);
-          
+
          posxM+=dirxM; 
          posyM+=diryM;
+ 
           
         if (frameCount%10==0)
         {

@@ -8,6 +8,8 @@ void draw() {
 
   //println(imgWidth,imgHeight);
   background(200);
+  
+  
  
   sphereDetail(6);
   if (anim>0) anim--;
@@ -16,9 +18,13 @@ void draw() {
       if (isInLab(posX, posY)== true ) {
 
          printLevel(level);
-          //pushMatrix();
-          //moveMomie();
-          //popMatrix();
+         
+   
+          
+          pushMatrix();
+          moveMomie();
+
+          popMatrix();
       }
         
        else 
@@ -38,7 +44,7 @@ void draw() {
        
           
             }
-         //shape(sable());
+         shape(sable());
          
         
        }
@@ -61,6 +67,18 @@ void draw() {
   //printing a level with it map
    //printLevel(1);
    //printMap(1, wallW, wallH);
+   
+  //-------------------------------------boussole
+
+  pushMatrix(); 
+  translate(870,50);
+  rotateCompass();
+  imageMode(CENTER);
+  image(boussole, 0, 0); 
+  //arrow();
+  
+  popMatrix();  
+  //-------------------------------------------- 
 
   pushMatrix();
   fill(0, 255, 0);
@@ -175,8 +193,6 @@ void draw() {
     }
   }
 
-    
-
   shape(laby0, 0, 0);
   if (!inLab)
     shape(ceiling0, 0, 0);
@@ -220,6 +236,7 @@ void keyPressed() {
   }
   //down
   if (anim==0 && keyCode==40 ){
+    currentDirection = Direction.SOUTH;
         if (posX ==LAB_SIZE2-1 && posY==LAB_SIZE2-2 && dirX ==-1 && dirY==0)
         return ;
       if (level!= 0 && posX ==1 && posY==0 && dirX ==0 && dirY==1)
@@ -237,6 +254,7 @@ void keyPressed() {
   }
   //left
   if (anim==0 && keyCode==37) {
+    currentDirection = Direction.WEST;
     odirX = dirX;
     odirY = dirY;
     anim = 20;
@@ -249,6 +267,7 @@ void keyPressed() {
   
   //right
   if (anim==0 && keyCode==39) {
+     currentDirection = Direction.EAST;
     odirX = dirX;
     odirY = dirY;
     anim = 20;
@@ -259,7 +278,7 @@ void keyPressed() {
     dirY=tmp;
   }
   if (keyCode == 85 )
-  {
+  {currentDirection = Direction.NORTH;
    
     if (level < 4 && posX ==LAB_SIZE2-1 && posY==LAB_SIZE2-2)
      {

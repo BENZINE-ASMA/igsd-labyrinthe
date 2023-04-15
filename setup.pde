@@ -84,6 +84,11 @@ PShape sable(){
 void setup() { 
   pixelDensity(2);
   randomSeed(2);
+  boussole = loadImage("boussole.jpg");
+  boussole.resize(70,70);
+  
+  hand1 = loadShape("hand1.obj");
+  hand2 = loadShape("hand2.obj");
  texture0 = loadImage("stones.jpg");
  texture1 = loadImage("stonewall.jpg");
  textSable = loadImage("sable.jpg");

@@ -140,6 +140,7 @@ void emempileLab(){
     createLab(size, z*90);
     size= size-4;
     }
+
    laby0.endShape();
    ceiling0.endShape();
    ceiling1.endShape();
@@ -268,6 +269,8 @@ void createPyr(int size, int z, float h) {
   
 
   endShape();
+  
+ 
 
 }
 
