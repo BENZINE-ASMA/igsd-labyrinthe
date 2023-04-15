@@ -1,6 +1,7 @@
 int iposX =1;
 int iposY = 0;
-
+int Bdir= 0;
+int Mdir= 0;
 int posX = iposX;
 int posY = iposY;
 int level = 0;
@@ -94,11 +95,7 @@ void setup() {
  textSable = loadImage("sable.jpg");
  ground  = loadImage("ground.jpg");
   size(1000, 1000, P3D);
-  centerX = 1340;
-  centerY = 1340;
-  doorWidth = 47;
-  doorHeight = 50;
-    ovalDoor = createDoor(centerX, centerY, doorWidth, doorHeight); // Create the oval door PShape
+
 
   
   labyrinthe = new char[PYR_SIZE][LAB_SIZE][LAB_SIZE];

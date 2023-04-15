@@ -172,12 +172,13 @@ Momie.scale(0.10);
 }
 
 
-void moveMomie(){ 
-//if (frameCount %2==0){
+void moveMomie(){    
+
+//if (frameCount %30==0){
 
 if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE2 && posyM+diryM>=0 && posyM+diryM<LAB_SIZE2)){
       if(labyrinthe[level][posyM+diryM][posxM+dirxM]!='#') {
-         translate(posxM*50,posyM*50,-5);
+         translate(posxM*48,posyM*48,-5);
 
          posxM+=dirxM; 
          posyM+=diryM;
@@ -190,12 +191,12 @@ if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE2 && posyM+diryM>=0 && posyM+diryM<LA
           int tmp = dirxM; 
           dirxM=-diryM; 
           diryM=tmp;
-          rotateZ(-PI/2);
+          rotateZ(-Mdir*PI/2);Mdir--;
         }else {//right
            int tmp = dirxM; 
            dirxM =diryM; 
            diryM =-tmp;
-           rotateZ(PI/2);
+            rotateZ(Mdir*PI/2);Mdir++;
         }
           
         //  int tmp = dirxM; 
@@ -238,7 +239,7 @@ if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE2 && posyM+diryM>=0 && posyM+diryM<LA
            int tmp = dirxM; 
            dirxM =diryM; 
            diryM =-tmp;
-           rotateZ(PI/2);
+           rotateZ(Mdir*PI/2);Mdir++;
         }
         //shape(momie());
       }
@@ -249,15 +250,17 @@ if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE2 && posyM+diryM>=0 && posyM+diryM<LA
           int tmp = dirxM; 
           dirxM=-diryM; 
           diryM=tmp;
-          rotateZ(PI/2);
+          rotateZ(Mdir*PI/2);
+          Mdir++;
         }else {//right
            int tmp = dirxM; 
            dirxM =diryM; 
            diryM =-tmp;
-           rotateZ(-PI/2);
+           rotateZ(-Mdir*PI/2);
+           Mdir--;
         } 
-  }
-   shape(momie());
+  }   shape(momie());
+
   //}
        
 }

@@ -7,7 +7,8 @@ void draw() {
   int imgHeight = texture1.height;
 
   //println(imgWidth,imgHeight);
-  background(200);
+   background(148, 213, 249);
+
   
   
  
@@ -16,30 +17,26 @@ void draw() {
   float wallW = width/LAB_SIZE;
   float wallH = height/LAB_SIZE;
       if (isInLab(posX, posY)== true ) {
-
          printLevel(level);
-         
-   
-          
-          pushMatrix();
-          moveMomie();
-
-          popMatrix();
-      }
-        
+          if (frameCount %19==0){
+            pushMatrix();
+            moveMomie();
+            popMatrix();
+          }
+        else {  
+        translate(posxM*48,posyM*48,-5);
+      shape(momie());}
+      } 
        else 
        {
          if (level !=1)
           {
-          //  pushMatrix();
-          //translate(47, 47, 0);
-          //rotateX(PI/2);
-          // background(220);
-          //         println("here");
-
-          //ellipse(0,0, 47, 100);
-          //  //shape(ovalDoor); // Draw the oval door using shape() function
-          //  popMatrix();
+            pushMatrix();
+          translate(47, -1, 0);
+          rotateX(PI/2);
+          fill(112, 103, 56);
+          ellipse(0,0, 47, 90);
+            popMatrix();
           empPyr();
        
           
@@ -201,16 +198,13 @@ void draw() {
 }
 
 void keyPressed() {
-  
-
-
-
   if (key=='l') 
     //true shows the inside
     //false shows the top
     inLab = !inLab;
   //up
   if (anim==0 && keyCode==38) {
+   // currentDirection = Direction.NORTH;
       if (posX ==LAB_SIZE2-1 && posY==LAB_SIZE2-2 && dirX ==1 && dirY==0)
         return ;
       if (level!= 0 && posX ==1 && posY==0 && dirX ==0 && dirY==-1)
@@ -236,7 +230,7 @@ void keyPressed() {
   }
   //down
   if (anim==0 && keyCode==40 ){
-    currentDirection = Direction.SOUTH;
+    //currentDirection = Direction.SOUTH;
         if (posX ==LAB_SIZE2-1 && posY==LAB_SIZE2-2 && dirX ==-1 && dirY==0)
         return ;
       if (level!= 0 && posX ==1 && posY==0 && dirX ==0 && dirY==1)
@@ -255,6 +249,7 @@ void keyPressed() {
   //left
   if (anim==0 && keyCode==37) {
     currentDirection = Direction.WEST;
+    Bdir++;
     odirX = dirX;
     odirY = dirY;
     anim = 20;
@@ -268,6 +263,7 @@ void keyPressed() {
   //right
   if (anim==0 && keyCode==39) {
      currentDirection = Direction.EAST;
+     Bdir--;
     odirX = dirX;
     odirY = dirY;
     anim = 20;
@@ -278,7 +274,7 @@ void keyPressed() {
     dirY=tmp;
   }
   if (keyCode == 85 )
-  {currentDirection = Direction.NORTH;
+  {
    
     if (level < 4 && posX ==LAB_SIZE2-1 && posY==LAB_SIZE2-2)
      {

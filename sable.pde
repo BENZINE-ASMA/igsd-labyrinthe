@@ -294,7 +294,7 @@ void printMap(int level)
   }
 }
 boolean isInLab(int dirX, int diry){
-  if ( posX<=1 && posY<=-1)
+  if (posY<=-1||posX<=-1|| posY>=LAB_SIZE||posX>=LAB_SIZE)
    { 
       return (false);}
      else if (level!=0)
@@ -309,10 +309,10 @@ PShape createDoor(float centerX, float centerY, float doorWidth, float doorHeigh
   door.fill(255); // Set fill color to white
   door.stroke(0); // Set stroke color to black
   
-  float panelWidth = doorWidth * 0.7; // Width of the door panel
-  float panelHeight = doorHeight * 0.9; // Height of the door panel
-  float panelX = centerX - panelWidth/2; // X-coordinate of the top-left corner of the door panel
-  float panelY = centerY - doorHeight/2; // Y-coordinate of the top-left corner of the door panel
+  float panelWidth = doorWidth * 0.3; // Width of the door panel
+  float panelHeight = doorHeight * 0.2; // Height of the door panel
+  float panelX = centerX - panelWidth/4; // X-coordinate of the top-left corner of the door panel
+  float panelY = centerY - doorHeight/4; // Y-coordinate of the top-left corner of the door panel
   
   float doorRadiusX = panelWidth/2; // X-axis radius of the door panel
   float doorRadiusY = panelHeight/2; // Y-axis radius of the door panel
