@@ -51,14 +51,14 @@ void createLab(int size, int z){
               laby0.vertex(i*wallW+wallW/2, j*wallH-wallH/2+(k+0)*wallW/WALLD, (l+1)*50/WALLD, (k+0)/(float)WALLD*texture0.width, (0.5+(l+1)/2.0/WALLD)*texture0.height);
             }
         }
-        //ceiling1.fill(32, 255, 0);
+        ceiling1.fill(32, 255, 0);
          
-        //ceiling1.fill(200);
+        ceiling1.fill(200);
 
-        //ceiling1.vertex(i*wallW-wallW/2, j*wallH-wallH/2, 50, 0, 0);
-        //ceiling1.vertex(i*wallW+wallW/2, j*wallH-wallH/2, 50, 0, 500);
-        //ceiling1.vertex(i*wallW+wallW/2, j*wallH+wallH/2,50, 500,500);
-        //ceiling1.vertex(i*wallW-wallW/2, j*wallH+wallH/2, 50, 500,0);        
+        ceiling1.vertex(i*wallW-wallW/2, j*wallH-wallH/2, 50, 0, 0);
+        ceiling1.vertex(i*wallW+wallW/2, j*wallH-wallH/2, 50, 0, 500);
+        ceiling1.vertex(i*wallW+wallW/2, j*wallH+wallH/2,50, 500,500);
+        ceiling1.vertex(i*wallW-wallW/2, j*wallH+wallH/2, 50, 500,0);        
       } 
 //      //else si ce n est pas un mur
       else {
@@ -115,7 +115,7 @@ void empPyr(){
   laby0.beginShape(QUADS);
   laby0.texture(texture0);
   laby0.noStroke();
-  int size = 25;
+  int size = 29;
   for (int z=0; z <=609; z+=47){
    pushMatrix();
    createPyr(size , z, z);
@@ -178,8 +178,6 @@ void createPyr(int size, int z, float h) {
   float wallH = height/LAB_SIZE;
   
   // mur face +losange
-  println (wallW );
-    println (wallH );
 
   
   beginShape(QUADS);

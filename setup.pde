@@ -56,8 +56,8 @@ PShape sable(){
   desert.beginShape(QUADS);
   noStroke();
   desert.texture(textSable);
-  for (int j = -100; j < 100; j++) {
-    for (int i = -100; i < 100; i++) {
+  for (int j = -100; j < 60; j++) {
+    for (int i = -60; i < 60; i++) {
       int t = 12;
       
       desert.fill(175, 139, 1);
@@ -93,7 +93,8 @@ void setup() {
  texture0 = loadImage("stones.jpg");
  texture1 = loadImage("stonewall.jpg");
  textSable = loadImage("sable.jpg");
- ground  = loadImage("ground.jpg");
+ ground  = loadImage("ground.png");
+ 
   size(1000, 1000, P3D);
 
 

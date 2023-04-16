@@ -193,9 +193,9 @@ void draw() {
       popMatrix();
     }
   }
-
+   if (isInLab(posX, posY)== true) 
+     shape(grd, 0, 0);
   shape(laby0, 0, 0);
-  shape(grd, 0, 0);
   if (!inLab)
     shape(ceiling0, 0, 0);
    else
