@@ -93,7 +93,8 @@ void setup() {
  texture0 = loadImage("stones.jpg");
  texture1 = loadImage("stonewall.jpg");
  textSable = loadImage("sable.jpg");
- ground  = loadImage("ground.jpg");
+ ground  = loadImage("ground.png");
+ 
   size(1000, 1000, P3D);
 
 
