@@ -1,20 +1,5 @@
 PImage boussole; 
 
-  PShape arrow;
-  PShape arrow(){
-  arrow = createShape();
-  arrow.beginShape();
-  arrow.fill(255, 0, 0);
-  arrow.stroke(0);
-  arrow.vertex(0, -70);
-  arrow.vertex(-10, -40);
-  arrow.vertex(0, -50);
-  arrow.vertex(10, -40);
-  arrow.endShape(CLOSE);
-  return arrow;
-  }
-
-
 
 enum Direction {
   NORTH,

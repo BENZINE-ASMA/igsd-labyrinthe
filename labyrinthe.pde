@@ -1,49 +1,6 @@
-//PShape desert;
-//float noiseVal = 0;
-//float angle = 0;
-
-//void setup() {
-//  size(800, 800, P3D);
-  
-//  //noStroke();
-//  desert = createShape();
-//  desert.beginShape(QUADS);
-//  desert.stroke(1);
-//  for (int j = -20; j < 20; j++) {
-//    for (int i = -20; i < 20; i++) {
-//      int t = 12;
-//      desert.fill(175, 139, 1);
-//      desert.vertex(j * t, i * t, noise(noiseVal + j * 0.1, noiseVal + i * 0.1) * 80);
-//      desert.fill(173, 140, 1);
-//      desert.vertex((j + 1) * t, i *t, noise(noiseVal + (j + 1) * 0.1, noiseVal + i * 0.1) * 80);
-//      desert.fill(174, 136, 0);
-//      desert.vertex((j + 1) *t, (i + 1) * t, noise(noiseVal + (j + 1) 
-//                    * 0.1, noiseVal + (i + 1) * 0.1) * 80);
-//      desert.fill(173, 135, 0);
-//      desert.vertex(j * t, (i + 1) *t, noise(noiseVal + j * 0.1, noiseVal + (i + 1) * 0.1) * 80);
-//    }
-//  }
-//  desert.endShape();
-//}
-
-//void draw() {
-//  background(255);
-//  // Set the camera to a top-down view
-//  camera(400, 800, 0, 0, 0, 0, 0, 1, 0);
-//  // Rotate the shape to be viewed from the top
-//  rotateY(PI/2);
-//  // Translate the shape to the center of the screen
-//  translate(70, 70); 
-//  // Draw the shape
-//  shape(desert);
-//  // Increment the noise value and angle for animation
-//  noiseVal += 25;
-//  angle += 0.01;
-//}
 
 void createLab(int size, int z){
-  // laby0.fill(32+z/, 255, 45);
-
+ 
   float wallW = width/LAB_SIZE;
   float wallH = height/LAB_SIZE;
     for (int j=0; j<size; j++) {
@@ -211,7 +168,6 @@ void createPyr(int size, int z, float h) {
   tint(188, 187, 136);
   float wallW = width/LAB_SIZE;
   float wallH = height/LAB_SIZE;
-  int new_z =z+47;
   
   // mur face +losange
   println (wallW );
@@ -304,28 +260,27 @@ boolean isInLab(int dirX, int diry){
   }
   
 PShape createDoor(float centerX, float centerY, float doorWidth, float doorHeight) {
-  PShape door = createShape(); // Create an empty PShape object
-  door.beginShape(); // Begin defining the shape
-  door.fill(255); // Set fill color to white
-  door.stroke(0); // Set stroke color to black
+  PShape door = createShape(); 
+  door.beginShape(); 
+  door.fill(255); 
+  door.stroke(0); 
   
-  float panelWidth = doorWidth * 0.3; // Width of the door panel
-  float panelHeight = doorHeight * 0.2; // Height of the door panel
-  float panelX = centerX - panelWidth/4; // X-coordinate of the top-left corner of the door panel
-  float panelY = centerY - doorHeight/4; // Y-coordinate of the top-left corner of the door panel
+  float panelWidth = doorWidth * 0.3; 
+  float panelHeight = doorHeight * 0.2; 
+  float panelX = centerX - panelWidth/4; 
+  float panelY = centerY - doorHeight/4; 
   
-  float doorRadiusX = panelWidth/2; // X-axis radius of the door panel
-  float doorRadiusY = panelHeight/2; // Y-axis radius of the door panel
+  float doorRadiusX = panelWidth/2; 
+  float doorRadiusY = panelHeight/2; 
   
-  float angleStep = radians(1); // Step for drawing vertices in radians
+  float angleStep = radians(1); 
   
-  // Loop through angles from 0 to 360 degrees and create vertices for the oval shape
   for (float angle = 0; angle < TWO_PI; angle += angleStep) {
     float x = panelX + doorRadiusX + doorRadiusX * cos(angle);
     float y = panelY + doorRadiusY + doorRadiusY * sin(angle);
     door.vertex(x, y); // Add vertex to the shape
   }
   
-  door.endShape(CLOSE); // End defining the shape and close it
-  return door; // Return the completed PShape object
+  door.endShape(CLOSE); 
+  return door; 
 }

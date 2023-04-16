@@ -165,16 +165,12 @@ PShape momie(){
  hand2.translate(-66, 103.5,300);
   
 Momie.rotateX(-PI/2);
-//Momie.translate(0,2000,200);
-//Momie.translate()
 Momie.scale(0.10);
   return Momie;
 }
 
 
 void moveMomie(){    
-
-//if (frameCount %30==0){
 
 if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE2 && posyM+diryM>=0 && posyM+diryM<LAB_SIZE2)){
       if(labyrinthe[level][posyM+diryM][posxM+dirxM]!='#') {
@@ -184,7 +180,7 @@ if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE2 && posyM+diryM>=0 && posyM+diryM<LA
          posyM+=diryM;
  
           
-        if (frameCount%10==0)
+        
         {
            float alea = random(1); 
            if (alea <= 0.5){//left
@@ -199,53 +195,28 @@ if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE2 && posyM+diryM>=0 && posyM+diryM<LA
             rotateZ(Mdir*PI/2);Mdir++;
         }
           
-        //  int tmp = dirxM; 
-        //   dirxM =diryM; 
-        //   diryM =-tmp;
-        //   rotateZ(PI/2);
-        //   shape(momie());
-        //   return  ;
 
         }
         
            
-           // println(wallH, wallW);
-            //shape(momie());
-            //if (frameCount %4==0){
            
-          //}
-       // }else if (alea < 0.95){//left
-       //    int tmp = dirxM; 
-       //    dirxM =diryM; 
-       //    diryM =-tmp;
-       //    rotateZ(PI/2);
-       // }else {//right
-       //   int tmp = dirxM; 
-       //   dirxM=-diryM; 
-       //   diryM=tmp;           
-       //   rotateZ(-PI/2);
-       //}
-       //shape(momie());
      }
      else  { //just turn 
          float alea = random(1); 
-     //println(alea);
+     
         if (alea <= 0.5){//left
-          //int tmp = dirxM; 
-          //dirxM=-diryM; 
-          //diryM=tmp;
-          //rotateZ(-PI/2);
+          
         }else {//right
            int tmp = dirxM; 
            dirxM =diryM; 
            diryM =-tmp;
            rotateZ(Mdir*PI/2);Mdir++;
         }
-        //shape(momie());
+       
       }
   }else {
    float alea = random(1); 
-     //println(alea);
+    
         if (alea < 0.5){//left
           int tmp = dirxM; 
           dirxM=-diryM; 
@@ -261,7 +232,7 @@ if ((posxM+dirxM>=0 && posxM+dirxM<LAB_SIZE2 && posyM+diryM>=0 && posyM+diryM<LA
         } 
   }   shape(momie());
 
-  //}
+  
        
 }
   

@@ -25,7 +25,6 @@ int LAB_SIZE = 21;
 int LAB_SIZE2 = 21;
 int PYR_SIZE = LAB_SIZE/4;
 char labyrinthe [][][];
-//char[][] pyramide[];
 char sides [][][][];
 
 PShape laby0;
@@ -41,12 +40,12 @@ PImage  ground;
 float wallW = width/LAB_SIZE;
 float wallH = height/LAB_SIZE;
 
-PShape ovalDoor; // Declare PShape object for oval door
-float centerX; // X-coordinate of the center of the door
-float centerY; // Y-coordinate of the center of the door
-float doorWidth; // Width of the door
-float doorHeight; // Height of the door 
-  
+PShape ovalDoor; 
+float centerX; 
+float centerY; 
+float doorWidth; 
+float doorHeight; 
+
 PShape desert;
 float noiseVal = 0;
 float angle = 0;
@@ -56,8 +55,8 @@ PShape sable(){
   desert.beginShape(QUADS);
   noStroke();
   desert.texture(textSable);
-  for (int j = -60; j < 60; j++) {
-    for (int i = -60; i < 60; i++) {
+  for (int j = -100; j < 100; j++) {
+    for (int i = -100; i < 100; i++) {
       int t = 12;
       
       desert.fill(175, 139, 1);
@@ -85,7 +84,7 @@ PShape sable(){
 void setup() { 
   pixelDensity(2);
   randomSeed(2);
-  boussole = loadImage("boussole.jpg");
+  boussole = loadImage("boussole.png");
   boussole.resize(70,70);
   
   hand1 = loadShape("hand1.obj");

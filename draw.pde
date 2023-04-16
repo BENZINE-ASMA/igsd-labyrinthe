@@ -1,12 +1,8 @@
 
 void draw() {
-  //LAB_SIZE = 21 -level*4;
+
     LAB_SIZE = 21;
 
-   int imgWidth = texture1.width;
-  int imgHeight = texture1.height;
-
-  //println(imgWidth,imgHeight);
    background(148, 213, 249);
 
   
@@ -76,7 +72,7 @@ void draw() {
   //-------------------------------------boussole
 
   pushMatrix(); 
-  translate(870,50);
+  translate(70,870);
   rotateCompass();
   imageMode(CENTER);
   image(boussole, 0, 0); 
