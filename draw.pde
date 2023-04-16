@@ -26,6 +26,12 @@ void draw() {
         else {  
         translate(posxM*48,posyM*48,-5);
       shape(momie());}
+      //si le joueur se fait attrapee par la momie il reviens au niveau de depart
+      //if (posX==posxM && posY==posyM)
+      //{ 
+      //  level=0;
+      //  posX =1;
+      //  posY = 0;}
       } 
        else 
        {
@@ -49,6 +55,8 @@ void draw() {
   camera(width/2.0, height/2.0, (height/2.0) / tan(PI*30.0 / 180.0), width/2.0, height/2.0, 0, 0, 1, 0);
   noLights();
   stroke(0);
+   //-------------------------------------Map
+  //printMap(level);
   for (int j=0; j<LAB_SIZE; j++) {
     for (int i=0; i<LAB_SIZE; i++) {
       if (labyrinthe[level][j][i]=='#') {
@@ -75,7 +83,7 @@ void draw() {
   //arrow();
   
   popMatrix();  
-  //-------------------------------------------- 
+  //--------------------------------------------  sphere du joueuer et momie
 
   pushMatrix();
   fill(0, 255, 0);

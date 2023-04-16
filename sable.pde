@@ -155,10 +155,9 @@ void empPyr(){
   laby0.beginShape(QUADS);
   laby0.texture(texture0);
   laby0.noStroke();
-  int size = 29;
-  for (int z=0; z <=564; z+=47){
-    pushMatrix();
-   // rotateX(PI/4);
+  int size = 25;
+  for (int z=0; z <=609; z+=47){
+   pushMatrix();
    createPyr(size , z, z);
    popMatrix();
     size= size-2;
@@ -169,6 +168,24 @@ void empPyr(){
  laby0.endShape();
  ceiling0.endShape();
   ceiling1.endShape();
+}
+void printMap(int level)
+{
+  
+  float wallW = width/LAB_SIZE;
+  float wallH = height/LAB_SIZE;
+    for (int j=0; j<LAB_SIZE; j++) {
+    for (int i=0; i<LAB_SIZE; i++) {
+      if (labyrinthe[level][j][i]=='#') {
+        fill(i*25, j*25, 255-i*10+j*10);
+        pushMatrix();
+        translate(50+i*wallW/8, 50+j*wallH/8, 50);
+        translate(79,width,0);
+        box(wallW/10, wallH/10, 5);
+        popMatrix();
+      }
+    }
+  }
 }
 
 // print only one level will be called if the player is in the pyr 
@@ -275,24 +292,7 @@ void createPyr(int size, int z, float h) {
 }
 
 // print the little map up left 
-void printMap(int level)
-{
-  
-  float wallW = width/LAB_SIZE;
-  float wallH = height/LAB_SIZE;
-    for (int j=0; j<LAB_SIZE; j++) {
-    for (int i=0; i<LAB_SIZE; i++) {
-      if (labyrinthe[level][j][i]=='#') {
-        fill(i*25, j*25, 255-i*10+j*10);
-        pushMatrix();
-        translate(50+i*wallW/8, 50+j*wallH/8, 50);
-        translate(79,width,0);
-        box(wallW/10, wallH/10, 5);
-        popMatrix();
-      }
-    }
-  }
-}
+
 boolean isInLab(int dirX, int diry){
   if (posY<=-1||posX<=-1|| posY>=LAB_SIZE||posX>=LAB_SIZE)
    { 
