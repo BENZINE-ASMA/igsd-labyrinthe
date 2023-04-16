@@ -28,6 +28,7 @@ char labyrinthe [][][];
 char sides [][][][];
 
 PShape laby0;
+PShape grd;
 PShape ceiling0;
 
 PShape ceiling1;
@@ -85,7 +86,7 @@ void setup() {
   pixelDensity(2);
   randomSeed(2);
   boussole = loadImage("boussole.png");
-  boussole.resize(70,70);
+  boussole.resize(90,90);
   
   hand1 = loadShape("hand1.obj");
   hand2 = loadShape("hand2.obj");

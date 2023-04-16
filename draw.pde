@@ -195,6 +195,7 @@ void draw() {
   }
 
   shape(laby0, 0, 0);
+  shape(grd, 0, 0);
   if (!inLab)
     shape(ceiling0, 0, 0);
    else
